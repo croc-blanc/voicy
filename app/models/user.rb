@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_attachment :photos
   has_attachment :videos
   has_attachment :voices
+  enum role:   [ :artistic_director, :actor ]
+  enum gender: [ :male, :female ]
 end
