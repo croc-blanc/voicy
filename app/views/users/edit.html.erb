@@ -1,2 +1,16 @@
 <h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<p>Ici il faut mettre des simple forms</p>
+
+  <%if user_signed_in?%>
+    <p>veuillez remplir votre profil ci-dessous </p>
+    <%else%>
+    <% redirect_to "/users/sign_in" %>
+    <%end%>
+
+  <%= simple_form_for(@user) do |f| %>
+    <%= f.input :last_name, placeholder: "Jean" %>
+    <%= f.input :first_name, placeholder: "Lassale" %>
+    <%= f.input :submit, class: "btn btn-primary" %>
+  <%end%>
+
+
