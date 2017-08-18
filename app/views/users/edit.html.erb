@@ -33,6 +33,14 @@
   <%else%>
         <%= simple_form_for(@user) do |f| %>
         <%= f.input :last_name, placeholder: "Jean" %>
+        <%= f.input :first_name, placeholder: "Lassale" %>
+        <%= f.input :birthday, placeholder: "date de naissance" %>
+        <%= f.input :gender, as: :radio_buttons, collection: User.genders, item_wrapper_tag: false, boolean_style: :inline%>
+        <%= f.input :phone_number, placeholder: "Numero de telephone" %>
+         <%= f.input :description, placeholder: "racontez votre bio" %>
+        <%= f.input :address, placeholder: "address" %>
+        <%= f.input :zip_code, placeholder: "code postal" %>
+        <%= f.input :city, placeholder: "city" %>
       <%end%>
   <%end%>
 
