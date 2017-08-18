@@ -1,1 +1,36 @@
 // Specific CSS for your home-page
+.btn {
+
+}
+
+// .flexbox {
+//   display: flex;
+//   align-items: center;
+// }
+
+.banner-container {
+  // background-image:
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  text-align: center;
+  height: 100vh;
+  background-size: cover !important;
+  position: relative
+}
+
+.banner-content {
+
+}
+
+.h1 {
+font-family: 'Archivo', sans-serif, semi-bold;
+position : absolute;
+top: 20px !important;
+
+}
+
+.banner-wrapper {
+  position: relative
+}
