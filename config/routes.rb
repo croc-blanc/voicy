@@ -1,23 +1,7 @@
 Rails.application.routes.draw do
-  get 'projects/index'
-
-  get 'projects/new'
-
-  get 'projects/create'
-
-  get 'projects/edit'
-
-  get 'projects/show'
-
-  get 'projects/update'
-
-  get 'projects/destroy'
-
-  get 'users/index'
-
-  get 'users/edit'
-
-  get 'users/show'
+  resources :users, only: [:index, :edit, :show, :update]  do
+    resources :projects
+  end
 
   mount Attachinary::Engine => "/attachinary"
   devise_for :users
