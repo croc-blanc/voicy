@@ -10,6 +10,12 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.user_id = current_user.id
+    if @project.save!
+      redirect_to project_path(@project)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -31,6 +37,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :begin, :end)
+    params.require(:project).permit(:name, :description, :type, :user_id, :begin, :end)
   end
 end
