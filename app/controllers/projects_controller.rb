@@ -37,6 +37,8 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :type, :user_id, :begin, :end)
+    params.require(:project).permit(:name, :description, :category, :begin, :end)
+    # petit probleme, le save se passe bien mais la category n'est pas enregister
+    # car elle n'est meme pas envoyer dans les params lors du create
   end
 end
