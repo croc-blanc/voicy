@@ -1,29 +1,4 @@
-<%if current_user.role?%>
-      <%=@user.last_name%>
-      <%=@user.first_name%>
-      <%=@user.birthday%>
-      <%=@user.gender%>
-      <%=@user.website%>
-      <%=@user.phone_number%>
-      <%=@user.avaibility%>
-      <%=@user.description%>
-      <%=@user.address%>
-      <%=@user.zip_code%>
-      <%=@user.city%>
-      <%=@user.voice_attribute%>
-
-      <% @user.voices.each do |voi| %>
-      <%=cl.image_tag voi.path%>
-      <%end%>
-      <% @user.photos.each do |pho| %>
-      <%=cl_image_tag pho.path, width:300, height:200, crop: :fill%>
-      <%end%>
-      <% @user.videos.each do |vid| %>
-      <%=cl.image_tag vid_path%>
-      <%end%>
-
-<%else%>
-
+<%if current_user.actor? %>
       <%=@user.last_name%>
       <%=@user.first_name%>
       <%=@user.birthday%>
@@ -48,6 +23,23 @@
 
       <% @user.videos.each do |vid| %>
         <%=cl_video_tag(vid.path, :width=>0.5, :crop => :scale, :preload => "none",
-          :controls => true, :fallback_content => "Your browser does not support HTML5 video tags")%>
+        :controls => true, :fallback_content => "Your browser does not support HTML5 video tags")%>
+      <%end%>
+
+<%else%>
+
+      <%=@user.last_name%>
+      <%=@user.first_name%>
+      <%=@user.birthday%>
+      <%=@user.gender%>
+      <%=@user.website%>
+      <%=@user.phone_number%>
+      <%=@user.description%>
+      <%=@user.address%>
+      <%=@user.zip_code%>
+      <%=@user.city%>
+
+      <% @user.photos.each do |pho| %>
+      <%=cl_image_tag pho.path, width:150, height:150, crop: :fill%>
       <%end%>
 <%end%>

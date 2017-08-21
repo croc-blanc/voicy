@@ -20,10 +20,10 @@ class User < ApplicationRecord
   validates :birthday, presence: :true, on: :update
   validates_inclusion_of :avaibility, :in => [true, false], on: :update
   validates :voice_attribute, presence: :true, on: :update
+  validates :role, numericality: true
 
 
   enum voice_attribute: [:grave, :moyen, :aigu]
   enum gender: [:femme, :homme]
   enum role: [:DA, :actor]
 end
-
