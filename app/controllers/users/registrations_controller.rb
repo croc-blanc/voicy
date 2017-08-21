@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_filter :role_to_integer
 
   # GET /resource/sign_up
   # def new
@@ -51,6 +52,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     "/users/:id"
+  end
+
+  def role_to_integer
+    unless params[:user] == nil
+      params[:user][:role] = params[:user][:role].to_i
+    end
   end
 
   # The path used after sign up for inactive accounts.

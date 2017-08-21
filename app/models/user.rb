@@ -9,5 +9,7 @@ class User < ApplicationRecord
   has_attachment :videos
   has_attachment :voices
 
+  validates :role, presence: true, numericality: true
+
   enum role: [:DA, :actor]
 end
