@@ -5,7 +5,7 @@
     <% redirect_to "/users/sign_in" %>
     <%end%>
 
-  <%if current_user.role == "actor" %>
+  <%if current_user.actor? %>
       <%= simple_form_for(@user) do |f| %>
         <%= f.input :last_name, placeholder: "Jean" %>
         <%= f.input :first_name, placeholder: "Lassale" %>
