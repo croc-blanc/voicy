@@ -5,6 +5,7 @@ class User < ApplicationRecord
                  :recoverable, :rememberable, :trackable, :validatable
   has_many       :bookings
   has_many       :projects
+
   has_attachments :photos, maximum: 10 #limiting upload to 10 units
   has_attachments :videos, maximum: 10 #limiting upload to 10 units
   has_attachments :voices, maximum: 10 #limiting upload to 10 units
@@ -18,10 +19,11 @@ class User < ApplicationRecord
   validates :birthday, presence: :true
   validates :avaibility, presence: :true
   validates :voice_attribute, presence: :true
-
+  validates :role, presence: true, numericality: true
 
   enum voice_attribute: [:grave, :moyen, :aigu]
   enum gender: [:femme, :homme]
   enum avaibility: [:oui, :non]
+  enum role: [:DA, :actor]
 end
 
