@@ -22,6 +22,7 @@ class User < ApplicationRecord
   validates :voice_attribute, presence: :true, on: :update
 
 
+
   enum voice_attribute: [:grave, :moyen, :aigu]
   enum gender: [:femme, :homme]
   enum role: [:DA, :actor]

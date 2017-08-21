@@ -1,11 +1,15 @@
+
+
+<div class= "container-edit">
   <%if user_signed_in?%>
-    <h1>Bienvenu</h1>
-    <h2>Veuillez completer votre profil:</h2>
-    <%else%>
+    <h1>Bienvenue</h1>
+    <h2>Veuillez compléter votre profil :</h2>
+  <%else%>
     <% redirect_to "/users/sign_in" %>
-    <%end%>
+  <%end%>
 
   <%if current_user.role?%>
+
       <%= simple_form_for(@user) do |f| %>
         <%= f.input :last_name, placeholder: "Jean" %>
         <%= f.input :first_name, placeholder: "Lassale" %>
@@ -45,7 +49,7 @@
         <%= f.submit "save", class: "btn btn-primary" %>
       <%end%>
   <%end%>
-
+</div>
 
 
 
