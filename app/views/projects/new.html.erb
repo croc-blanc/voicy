@@ -6,7 +6,7 @@
 
   <%= f.input :name %>
   <%= f.text_area :description %>
-  <%= f.input :category, collection: [ "film", "serie", "dessin_anime", "publicite" ] %>
+  <%= f.input :category, collection: Project.categories.keys, include_blank: false%>
   <%= f.input :begin, as: :date %>
   <%= f.input :end, as: :date %>
 
