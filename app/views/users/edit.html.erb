@@ -5,7 +5,7 @@
     <% redirect_to "/users/sign_in" %>
     <%end%>
 
-  <%if current_user.role?%>
+  <%if current_user.role == "actor" %>
       <%= simple_form_for(@user) do |f| %>
         <%= f.input :last_name, placeholder: "Jean" %>
         <%= f.input :first_name, placeholder: "Lassale" %>
@@ -36,7 +36,7 @@
         <%= f.input :last_name, placeholder: "Jean" %>
         <%= f.input :first_name, placeholder: "Lassale" %>
         <%= f.input :birthday, placeholder: "date de naissance" %>
-        <%= f.input :gender, as: :select, collection: User.genders, item_wrapper_tag: false, boolean_style: :inline%>
+        <%= f.input :gender, as: :select, collection: User.genders.keys, item_wrapper_tag: false, boolean_style: :inline%>
         <%= f.input :phone_number, placeholder: "Numero de telephone" %>
          <%= f.input :description, placeholder: "racontez votre bio" %>
         <%= f.input :address, placeholder: "address" %>
