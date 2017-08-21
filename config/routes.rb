@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'bookings/destroy'
+
   devise_for :users
   resources :users, only: [:index, :edit, :show, :update]  do
     collection do
       resources :projects
+      resources :bookings, only: [:destroy]
     end
   end
   mount Attachinary::Engine => "/attachinary"

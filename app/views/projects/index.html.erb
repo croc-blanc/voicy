@@ -2,6 +2,11 @@
 <p>Find me in app/views/projects/index.html.erb</p>
 <ul>
   <% @projects.each do |project| %>
-    <li><%= project.name %></li>
+    <li>
+      <%= link_to project.name, project_path(project) %>
+      <%= link_to project_path(project), data: "fdfd", method: :delete do %>
+        <i class="fa fa-close"></i>
+        <% end %>
+    </li>
   <% end %>
 </ul>

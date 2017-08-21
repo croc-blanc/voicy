@@ -4,6 +4,11 @@
 <ul>
   <h4>Liste des participants au projet :</h4>
   <% @project.users.each do |participant|  %>
-    <li><%= participant.first_name %></li>
+    <li>
+      <%= link_to participant.first_name, user_path(participant) %>
+      <%= link_to bookings_destroy_path(participant.bookings.ids)  do %>
+        <i class="fa fa-close"></i>
+        <% end %>
+    </li>
   <% end  %>
 </ul>
