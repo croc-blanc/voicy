@@ -14,17 +14,17 @@
       <%= simple_form_for(@user) do |f| %>
         <%= f.input :last_name, placeholder: "Jean" %>
         <%= f.input :first_name, placeholder: "Lassale" %>
-        <%= f.input :birthday, placeholder: "date de naissance" %>
+        <%= f.input :birthday, placeholder: "Date de naissance" %>
         <%= f.input :gender, as: :select, collection: User.genders.keys%>
         <!-- ici c'est en radio button car on ne peut choisir qu'une homme ou femme -->
-        <%= f.input :website, placeholder: "site internet" %>
-        <%= f.input :phone_number, placeholder: "Numero de telephone" %>
+        <%= f.input :website, placeholder: "Site internet" %>
+        <%= f.input :phone_number, placeholder: "Numéro de téléphone" %>
         <%= f.input :avaibility , as: :radio_buttons, :collection => [['oui', false], ['Pas en ce moment', false]]%>
         <!-- ici c'est en radio button car on ne peut choisir qu'un attribut -->
-        <%= f.input :description, placeholder: "racontez votre bio" %>
-        <%= f.input :address, placeholder: "address" %>
-        <%= f.input :zip_code, placeholder: "code postal" %>
-        <%= f.input :city, placeholder: "city" %>
+        <%= f.input :description, placeholder: "Racontez votre histoire" %>
+        <%= f.input :address, placeholder: "Adresse" %>
+        <%= f.input :zip_code, placeholder: "Code postal" %>
+        <%= f.input :city, placeholder: "Marseille" %>
 
         <%= f.input :photos, as: :attachinary %>
         <%= f.input :videos, as: :attachinary %>
@@ -34,20 +34,20 @@
         <!-- ici c'est en radio button car on ne peut choisir qu'un attribut -->
         <%= f.input :voices, as: :attachinary %>
 
-        <%= f.submit "save", class: "btn btn-primary" %>
+        <%= f.submit "Save", class: "btn btn-danger" %>
       <%end%>
   <%else%>
         <%= simple_form_for(@user) do |f| %>
         <%= f.input :last_name, placeholder: "Jean" %>
         <%= f.input :first_name, placeholder: "Lassale" %>
-        <%= f.input :birthday, placeholder: "date de naissance" %>
+        <%= f.input :birthday, placeholder: "Date de naissance" %>
         <%= f.input :gender, as: :select, collection: User.genders, item_wrapper_tag: false, boolean_style: :inline%>
-        <%= f.input :phone_number, placeholder: "Numero de telephone" %>
-         <%= f.input :description, placeholder: "racontez votre bio" %>
-        <%= f.input :address, placeholder: "address" %>
-        <%= f.input :zip_code, placeholder: "code postal" %>
-        <%= f.input :city, placeholder: "city" %>
-        <%= f.submit "save", class: "btn btn-primary" %>
+        <%= f.input :phone_number, placeholder: "Numéro de téléphone" %>
+         <%= f.input :description, placeholder: "Racontez votre histoire" %>
+        <%= f.input :address, placeholder: "Adresse" %>
+        <%= f.input :zip_code, placeholder: "Code postal" %>
+        <%= f.input :city, placeholder: "Marseille" %>
+        <%= f.submit "Save", class: "btn btn-danger" %>
       <%end%>
   <%end%>
 </div>

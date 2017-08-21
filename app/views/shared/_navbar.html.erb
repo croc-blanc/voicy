@@ -23,19 +23,17 @@
             </li>
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Projets") %> 
+                <i class="fa fa-home"></i>  <%= t(".profile", default: "Projets") %>
               <% end %>
             </li>
             <li>
               <%= link_to "#" do %>
-
                 <i class="fa fa-index"></i>  <%= t(".profile", default: "Index") %>
-
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconection") %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconexion") %>
               <% end %>
             </li>
           </ul>
