@@ -22,6 +22,7 @@ class User < ApplicationRecord
   validates :voice_attribute, presence: :true, on: :update, unless: :devise?
 
 
+
   enum voice_attribute: [:grave, :moyen, :aigu]
   enum gender: [:femme, :homme]
   enum role: [:DA, :actor]
@@ -32,4 +33,3 @@ class User < ApplicationRecord
     email_changed? || encrypted_password_changed?
   end
 end
-
