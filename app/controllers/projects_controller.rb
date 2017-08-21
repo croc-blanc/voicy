@@ -1,16 +1,21 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:edit, :show, :update, :destroy]
+  before_action :set_project, only: [:edit, :show, :update, :destroy, :destroy_user]
   def index
     @projects = Project.all
   end
 
   def new
-    @project = Project.new
+    if current_user.role == "artistic_director" # A modifier par greg
+        @project = Project.new
+    else
+      flash[:notice] = "Your should be Artistic director to create a project "
+      redirect_to root_path
+    end
   end
 
   def create
-    @project = Project.new(project_params)
-    @project.user_id = current_user.id
+  @project = Project.new(project_params)
+  @project.user_id = current_user.id
     if @project.save
       flash[:notice] = "Your project has been created"
       redirect_to project_path(@project)
@@ -20,6 +25,10 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    if current_user.role != "artistic_director" # A modifier par greg
+      flash[:notice] = "Your should be Artistic director to edit a project "
+      redirect_to root_path
+    end
   end
 
   def show
@@ -35,6 +44,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project.destroy
+    redirect_to projects_path(current_user.projects)
+  end
+
+  def destroy_user(user)
+    @project.users.delete(user)
+    @project.save!
   end
 
   private
@@ -45,7 +61,5 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :description, :category, :begin, :end)
-    # petit probleme, le save se passe bien mais la category n'est pas enregister
-    # car elle n'est meme pas envoyer dans les params lors du create
   end
 end
