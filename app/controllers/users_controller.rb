@@ -7,12 +7,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to "/"
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
 
 
   def user_params
-      params.require(:user).permit(:first_name, :last_name, :photos)
+      params.require(:user).permit(:first_name, :last_name, :phone_number, :address, :city, :birthday, :website, :avaibility, :description, :zip_code,:gender,:voice_attribute, voices: [], videos: [], photos: [])
   end
 
 end
