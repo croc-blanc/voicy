@@ -1,2 +1,31 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%if current_user.role?%>
+      <%=@user.last_name%>
+      <%=@user.first_name%>
+      <%=@user.birthday%>
+      <%=@user.gender%>
+      <%=@user.website%>
+      <%=@user.phone_number%>
+      <%=@user.avaibility%>
+<!--       <%=@user.description%> -->
+      <%=@user.address%>
+      <%=@user.zip_code%>
+      <%=@user.city%>
+      <%=@user.voice_attribute%>
+
+      <%= @user.voices.each do |voi| %>
+      <%=cl.image_tag voice.path%>
+      <%end%>
+      <%= @user.photos.each do |pho| %>
+      <%=cl.image_tag pho.path, width:300, height:200, crop: :fill%>
+      <%end%>
+      <%= @user.videos.each do |vid| %>
+      <%=cl.image_tag video_path%>
+      <%end%>
+
+
+
+
+<%else%>
+
+
+<%end%>
