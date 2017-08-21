@@ -9,21 +9,21 @@ class User < ApplicationRecord
   has_attachments :photos, maximum: 10 #limiting upload to 10 units
   has_attachments :videos, maximum: 10 #limiting upload to 10 units
   has_attachments :voices, maximum: 10 #limiting upload to 10 units
-  validates :first_name, presence: :true
-  validates :last_name, presence: :true
-  validates :zip_code, presence: :true
-  validates :address, presence: :true
-  validates :city, presence: :true
-  validates :phone_number, presence: :true
-  validates :gender, presence: :true
-  validates :birthday, presence: :true
-  validates :avaibility, presence: :true
-  validates :voice_attribute, presence: :true
-  validates :role, presence: true, numericality: true
+
+  validates :first_name, presence: :true, on: :update
+  validates :last_name, presence: :true, on: :update
+  validates :zip_code, presence: :true, on: :update
+  validates :address, presence: :true, on: :update
+  validates :city, presence: :true, on: :update
+  validates :phone_number, presence: :true, on: :update
+  validates :gender, presence: :true, on: :update
+  validates :birthday, presence: :true, on: :update
+  validates_inclusion_of :avaibility, :in => [true, false], on: :update
+  validates :voice_attribute, presence: :true, on: :update
+
 
   enum voice_attribute: [:grave, :moyen, :aigu]
   enum gender: [:femme, :homme]
-  enum avaibility: [:oui, :non]
   enum role: [:DA, :actor]
 end
 
