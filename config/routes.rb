@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'bookings/destroy'
 
   devise_for :users
   resources :users, only: [:index, :edit, :show, :update]  do

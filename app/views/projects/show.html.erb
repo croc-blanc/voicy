@@ -6,9 +6,11 @@
   <% @project.users.each do |participant|  %>
     <li>
       <%= link_to participant.first_name, user_path(participant) %>
-      <%= link_to bookings_destroy_path(participant.bookings.ids)  do %>
+      <%= link_to booking_path(participant.bookings.where(project_id: @project.id).first.id), method: :delete  do %>
         <i class="fa fa-close"></i>
         <% end %>
     </li>
   <% end  %>
 </ul>
+
+<%= link_to "Retour a la liste des projets", projects_path %>
