@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     if @project.save
+      flash[:notice] = "Your project has been created"
       redirect_to project_path(@project)
     else
       render :new
@@ -25,6 +26,12 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    if @project.update(project_params)
+      flash[:notice] = "Your project has been updated"
+      redirect_to project_path
+    else
+      render :edit
+    end
   end
 
   def destroy
