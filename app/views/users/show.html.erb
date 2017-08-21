@@ -16,7 +16,6 @@
       <%=cl_video_tag(voi.path, controls: true)%>
       <%end%>
 
-
       <% @user.photos.each do |pho| %>
       <%=cl_image_tag pho.path, width:150, height:150, crop: :fill%>
       <%end%>

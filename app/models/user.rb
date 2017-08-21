@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_attachments :videos, maximum: 10 #limiting upload to 10 units
   has_attachments :voices, maximum: 10 #limiting upload to 10 units
 
+
   validates :first_name, presence: :true, on: :update, unless: :devise?
   validates :last_name, presence: :true, on: :update, unless: :devise?
   validates :zip_code, presence: :true, on: :update, unless: :devise?
@@ -20,12 +21,15 @@ class User < ApplicationRecord
   validates :birthday, presence: :true, on: :update, unless: :devise?
   validates_inclusion_of :avaibility, :in => [true, false], on: :update, unless: :devise?
   validates :voice_attribute, presence: :true, on: :update, unless: :devise?
-
-
+   with_options if: :actor? do |actor|
+    actor.validates_inclusion_of :avaibility, :in => [true, false], on: :update
+    actor.validates :voice_attribute, presence: :true, on: :update
+  end
 
   enum voice_attribute: [:grave, :moyen, :aigu]
   enum gender: [:femme, :homme]
   enum role: [:DA, :actor]
+
 
   private
 
