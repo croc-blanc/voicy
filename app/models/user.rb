@@ -18,12 +18,18 @@ class User < ApplicationRecord
   validates :phone_number, presence: :true, on: :update
   validates :gender, presence: :true, on: :update
   validates :birthday, presence: :true, on: :update
-  validates_inclusion_of :avaibility, :in => [true, false], on: :update
-  validates :voice_attribute, presence: :true, on: :update
   validates :role, numericality: true
+  with_options if: :actor? do |actor|
+    actor.validates_inclusion_of :avaibility, :in => [true, false], on: :update
+    actor.validates :voice_attribute, presence: :true, on: :update
+  end
 
 
   enum voice_attribute: [:grave, :moyen, :aigu]
   enum gender: [:femme, :homme]
   enum role: [:DA, :actor]
+
+ # def is_actor?
+ #   current_user.actor?
+ # end
 end
