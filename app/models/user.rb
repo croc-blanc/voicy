@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :role, numericality: true
 
 
+
   enum voice_attribute: [:grave, :moyen, :aigu]
   enum gender: [:femme, :homme]
   enum role: [:DA, :actor]

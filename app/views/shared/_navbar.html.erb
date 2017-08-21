@@ -10,9 +10,6 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -26,17 +23,19 @@
             </li>
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-cog"></i> <%= t(".profile", default: "Settings") %>
+                <i class="fa fa-home"></i>  <%= t(".profile", default: "Projets") %> 
               <% end %>
             </li>
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+
+                <i class="fa fa-index"></i>  <%= t(".profile", default: "Index") %>
+
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconection") %>
               <% end %>
             </li>
           </ul>
