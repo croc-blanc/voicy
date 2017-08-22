@@ -1,12 +1,7 @@
 // Specific CSS for your home-page
-.btn {
-
+.btn-home {
+border-radius: 5px;
 }
-
-// .flexbox {
-//   display: flex;
-//   align-items: center;
-// }
 
 .banner-container {
   // background-image:
@@ -21,16 +16,13 @@
 }
 
 .banner-content {
-
-}
-
-.h1 {
-font-family: 'Archivo', sans-serif, semi-bold;
-position : absolute;
-top: 20px !important;
-
 }
 
 .banner-wrapper {
   position: relative
+}
+
+.btn-danger{
+  background-color: #af0101;
+  border-color: #af0101;
 }

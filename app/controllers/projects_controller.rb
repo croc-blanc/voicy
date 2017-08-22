@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :show, :update, :destroy, :destroy_user]
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def new
-    if current_user.role == "artistic_director" # A modifier par greg
+    if current_user.DA? # A modifier par greg
         @project = Project.new
     else
       flash[:notice] = "Your should be Artistic director to create a project "
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    if current_user.role != "artistic_director" # A modifier par greg
+    if current_user.DA?
       flash[:notice] = "Your should be Artistic director to edit a project "
       redirect_to root_path
     end

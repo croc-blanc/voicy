@@ -11,15 +11,17 @@
               <div class="banner-container" style="background-image: url('<%= image_url "theater.jpg" %>')">
                 <div class="banner-content">
                 <h1>VOICY</h1>
-                  <p><button type="button" class="btn btn-warning btn-block" href="#">Submit</button></p>
-                  <p><button type="button" class="btn btn-primary btn-block" href="#">Facebook Connect</button></p>
-                  <p><button type="button" class="btn btn-warning btn-block" href="#">Sign Up</button></p>
+                  <%= link_to "Login", new_user_session_path, class: "btn btn-danger btn-block" %>
+                  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-danger btn-block" %>
+                 <!--  <p><button type="button" class="btn-home btn-danger btn-block" href="#">Login</button></p>
+
+                  <p><button type="button" class="btn-home btn-danger btn-block" href="#">Sign Up</button></p> -->
                 </div>
               </div>
             </div>
           </body>
   </html>
-
+<!-- #af0101 -->
 
 <!--
  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://unsplash.com/search/photos/cinema?photo=4SLz_RCk6kQ');"> -->
