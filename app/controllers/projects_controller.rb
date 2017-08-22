@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    if current_user.DA?
+    if current_user.actor?
       flash[:notice] = "Your should be Artistic director to edit a project "
       redirect_to root_path
     end
