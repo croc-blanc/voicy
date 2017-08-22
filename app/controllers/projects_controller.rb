@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    if current_user.DA?
+    if current_user.actor? # A modifier par greg
         @project = Project.new
     else
       flash[:notice] = "Your should be Artistic director to create a project "

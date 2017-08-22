@@ -1,18 +1,40 @@
 <%if current_user.DA?%>
-  <% @users.each do |user| %>
-  <%=user.first_name%>
-  <%=user.last_name%>
-  <%=user.voice_attribute%>
-  <%if user.photos?%>
-    <%=cl_image_tag user.photos.first.path, :width=>75, :height=>75, :gravity=>"face", :radius=>"max", :effect=>"sharpen", :crop=>"thumb"%>
-  <%else%>
-    <%=image_tag('http://cyclurba.fr/personne/image/avatar07933.gif')%>
-    <%end%>
-
-<%end%>
-
-<%else%>
+  <h1 class="text-center">Tous les acteurs</h1>
+    <div class="container">
+      <div class="row">
+        <% @users.actor.each do |user| %>
+        <div class="col-xs-12 col-sm-6">
+          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper">
+              <div class="front">
+                <div class="card text-center" id="photoback" style="background-image: url('https://www.juliedesk.com/wp-content/uploads/2017/03/language-naturel@1x.png')">
+                        <div class="photo-index"><%if user.photos?%>
+                          <%=cl_image_tag user.photos.first.path, :width=>75, :height=>75, :gravity=>"face", :radius=>"max", :effect=>"sharpen", :crop=>"thumb"%>
+                        <%else%>
+                          <div class="card-header" style="background-image: url('http://www.clubpoker.net/forum-poker/uploads/1292350273/gallery_44176_461_45151.png')">
+                          </div>
+                        <%end%>
+                        </div>
+                          <div class="text">
+                           <span><%=user.first_name%> <%=user.last_name%></span> - <span>Voix: <%=user.voice_attribute%></span>
+                          </div>
+                </div>
+            </div>
+             <div class="back text-center">
+                  <h2><%=link_to "Voir cet acteur", user_path(user) %></h2>
+             </div>
+          </div>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div>
+ <%else%>
   <h1>Vous devez être directeur artistique pour accéder à cette page</h1><br>
   <p>merci de vous connecter avec votre profil directeur artistique</p>
+
 <%end%>
+
+
+
 
