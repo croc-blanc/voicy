@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 actor_count = 1
-puts 'Creating 50 fake actors...'
-20.times do
+puts 'Creating 10 fake actors...'
+10.times do
   actor = User.new(
     first_name:      Faker::Name.first_name,
     last_name:       Faker::Name.last_name,
@@ -32,14 +32,14 @@ puts 'Creating 50 fake actors...'
   puts "#{actor_count} actors created !"
   actor_count += 1
 end
-da_count = 1
-puts 'Creating 10 fake DA...'
-10.times do
+ da_count = 1
+puts 'Creating 5 fake DA with him project...'
+5.times do
   da = User.new(
     first_name:      Faker::Name.first_name,
     last_name:       Faker::Name.last_name,
     email:           Faker::Internet.email,
-    password:        Faker::Internet.password(10, 20, true),
+    password:        "031088",
     birthday:        Faker::Date.birthday(18, 65),
     website:         Faker::Internet.url,
     role:            0,
@@ -55,5 +55,10 @@ puts 'Creating 10 fake DA...'
   da.save!
   puts "#{da_count} da created !"
   da_count += 1
+  pro = Project.create(name: Faker::Pokemon.name, description: Faker::Lorem.paragraph,
+                       begin: Faker::Date.backward(30), end: Faker::Date.forward(30),
+                       user_id: da.id, category: Faker::Number.between(0, 1).to_i)
+  pro.users = User.where(role: "actor").limit(10)
+  pro.save!
+  puts "project created at #{da.first_name} DA !"
 end
-puts 'Finished!'

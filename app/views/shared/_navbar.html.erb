@@ -40,7 +40,7 @@
               <i class="fa fa-comments"></i> <%= t(".profile", default: "Projects") %>
               <% end %>
             <% else %>
-              <%= link_to project_path(current_user) do %>
+              <%= link_to projects_path do %>
               <i class="fa fa-comments"></i> <%= t(".profile", default: "Projects") %>
               <% end %>
             <% end %>
@@ -78,4 +78,3 @@
   </div>
 </div>
 </div>
-
