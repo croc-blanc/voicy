@@ -1,4 +1,4 @@
-<div class= "container-form">
+
   <%if current_user.DA?%>
     <% @users.each do |user| %>
     <%=user.first_name%>
@@ -16,4 +16,4 @@
     <h1>Vous devez être directeur artistique pour accéder à cette page</h1><br>
     <p>merci de vous connecter avec votre profil directeur artistique</p>
   <%end%>
-</div>
+
