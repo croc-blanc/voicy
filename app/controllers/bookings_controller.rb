@@ -9,7 +9,8 @@ class BookingsController < ApplicationController
       redirect_to users_path
       flash[:notice] = "L'acteur à bien était ajouté à votre projet !"
     else
-      raise
+      redirect_to users_path
+      flash[:alert] = "Cet acteur est déjà présent dans votre projet" 
     end
   end
 
