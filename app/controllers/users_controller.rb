@@ -15,13 +15,13 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if current_user.DA?
-      if @user.update!(user_params_da)
+      if @user.update(user_params_da)
         redirect_to user_path(current_user)
       else
         render :edit
       end
     else
-      if @user.update!(user_params)
+      if @user.update(user_params)
         redirect_to user_path(current_user)
       else
         render :edit

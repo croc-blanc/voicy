@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+
 <%if current_user.actor?%>
-=======
-<%if current_user.actor? %>
->>>>>>> b29c9449d72d5606d131278b961c8b91c976b959
       <%=@user.last_name%>
       <%=@user.first_name%>
       <%=@user.birthday%>
@@ -26,11 +23,8 @@
 
       <% @user.videos.each do |vid| %>
         <%=cl_video_tag(vid.path, :width=>0.5, :crop => :scale, :preload => "none",
-<<<<<<< HEAD
           :controls => true, :fallback_content => "Your browser does not support HTML5 video tags")%>
-=======
-        :controls => true, :fallback_content => "Your browser does not support HTML5 video tags")%>
->>>>>>> b29c9449d72d5606d131278b961c8b91c976b959
+
       <%end%>
 
 <%else%>
