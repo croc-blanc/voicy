@@ -1,18 +1,19 @@
-<%if current_user.DA?%>
-  <% @users.each do |user| %>
-  <%=user.first_name%>
-  <%=user.last_name%>
-  <%=user.voice_attribute%>
-  <%if user.photos?%>
-    <%=cl_image_tag user.photos.first.path, :width=>75, :height=>75, :gravity=>"face", :radius=>"max", :effect=>"sharpen", :crop=>"thumb"%>
-  <%else%>
-    <%=image_tag('http://cyclurba.fr/personne/image/avatar07933.gif')%>
+<div class= "container-form">
+  <%if current_user.DA?%>
+    <% @users.each do |user| %>
+    <%=user.first_name%>
+    <%=user.last_name%>
+    <%=user.voice_attribute%>
+    <%if user.photos?%>
+      <%=cl_image_tag user.photos.first.path, :width=>75, :height=>75, :gravity=>"face", :radius=>"max", :effect=>"sharpen", :crop=>"thumb"%>
+    <%else%>
+      <%=image_tag('http://cyclurba.fr/personne/image/avatar07933.gif')%>
     <%end%>
 
-<%end%>
+  <%end%>
 
-<%else%>
-  <h1>Vous devez être directeur artistique pour accéder à cette page</h1><br>
-  <p>merci de vous connecter avec votre profil directeur artistique</p>
-<%end%>
-
+  <%else%>
+    <h1>Vous devez être directeur artistique pour accéder à cette page</h1><br>
+    <p>merci de vous connecter avec votre profil directeur artistique</p>
+  <%end%>
+</div>
