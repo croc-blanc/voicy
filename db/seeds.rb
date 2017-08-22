@@ -5,3 +5,47 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Creating 100 fake actors...'
+100.times do
+  actor = User.new(
+    first_name:      Faker::Name.first_name,
+    last_name:       Faker::Name.last_name,
+    email:           Faker::Internet.email,
+    password:        Faker::Internet.password(10, 20, true),
+    birthday:        Faker::Date.birthday(18, 65),
+    website:         Faker::Internet.url,
+    role:            1,
+    gender:          Faker::Number.between(0, 1).to_i,
+    phone_number:    Faker::PhoneNumber.phone_number,
+    voice_attribute: Faker::Number.between(0, 2).to_i,
+    description:     Faker::Lorem.paragraph,
+    avaibility:      Faker::Boolean.boolean(0.2),
+    address:         Faker::Address.street_address,
+    zip_code:        Faker::Address.zip_code,
+    city:            Faker::Address.city
+
+  )
+  actor.save!
+end
+puts 'Creating 10 fake DA...'
+100.times do
+  da = User.new(
+    first_name:      Faker::Name.first_name,
+    last_name:       Faker::Name.last_name,
+    email:           Faker::Internet.email,
+    password:        Faker::Internet.password(10, 20, true),
+    birthday:        Faker::Date.birthday(18, 65),
+    website:         Faker::Internet.url,
+    role:            0,
+    gender:          Faker::Number.between(0, 1).to_i,
+    phone_number:    Faker::PhoneNumber.phone_number,
+    address:         Faker::Address.street_address,
+    zip_code:        Faker::Address.zip_code,
+    city:            Faker::Address.city
+
+  )
+  da.save!
+end
+
+AJOUTER LES PROJETS EN SEED
+puts 'Finished!'
