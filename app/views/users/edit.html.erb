@@ -2,8 +2,8 @@
 
 <div class= "container-form">
   <%if user_signed_in?%>
-    <h1>Bienvenue</h1>
-    <h2>Veuillez compléter votre profil :</h2>
+    <h1 class="police-title">Bienvenue</h1>
+    <h2 class="police-title">Veuillez compléter votre profil :</h2>
   <%else%>
     <% redirect_to "/users/sign_in" %>
   <%end%>
