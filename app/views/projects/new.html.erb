@@ -1,3 +1,5 @@
-<h1>Create a new project of : <%= current_user.first_name %></h1>
-<%= render 'shared/form' %>
-<%= link_to "Retour a la liste des projets", projects_path, class: "btn btn-success" %>
+<div class="container-form">
+  <h1>Nouveau projet de <%= current_user.last_name.capitalize%> <%=current_user.first_name.capitalize%></h1>
+  <%= render 'shared/form' %>
+  <%= link_to "Retour a la liste des projets", projects_path, class: "btn btn-danger" %>
+</div>

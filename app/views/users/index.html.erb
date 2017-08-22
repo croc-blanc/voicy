@@ -7,7 +7,7 @@
           <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
             <div class="flipper">
               <div class="front">
-                <div class="card text-center">
+                <div class="card-index text-center">
                         <div class="photo-index"><%if user.photos?%>
                           <%=cl_image_tag user.photos.first.path, :width=>75, :height=>75, :gravity=>"face", :radius=>"max", :effect=>"sharpen", :crop=>"thumb"%>
                         <%else%>
