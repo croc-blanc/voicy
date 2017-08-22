@@ -5,8 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts 'Creating 100 fake actors...'
-100.times do
+actor_count = 1
+puts 'Creating 50 fake actors...'
+50.times do
   actor = User.new(
     first_name:      Faker::Name.first_name,
     last_name:       Faker::Name.last_name,
@@ -25,10 +26,15 @@ puts 'Creating 100 fake actors...'
     city:            Faker::Address.city
 
   )
+  photo = Faker::LoremPixel.image
+  actor.photos = Cloudinary::Uploader.upload(photo)
   actor.save!
+  puts "#{actor_count} actors created !"
+  actor_count += 1
 end
+da_count = 1
 puts 'Creating 10 fake DA...'
-100.times do
+10.times do
   da = User.new(
     first_name:      Faker::Name.first_name,
     last_name:       Faker::Name.last_name,
@@ -44,8 +50,10 @@ puts 'Creating 10 fake DA...'
     city:            Faker::Address.city
 
   )
+  photo = Faker::LoremPixel.image
+  da.photos = Cloudinary::Uploader.upload(photo)
   da.save!
+  puts "#{da_count} da created !"
+  da_count += 1
 end
-
-AJOUTER LES PROJETS EN SEED
 puts 'Finished!'
