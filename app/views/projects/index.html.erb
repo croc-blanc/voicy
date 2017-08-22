@@ -1,12 +1,12 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title class="police-title">Document</title>
 </head>
-<body>
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
-<%= link_to "Creer un nouveau projet", new_project_path, class: "btn btn-success" %>
+<body class="police-title">
+<h1 class="police-title">Projects#index</h1>
+<p class="police-title">Find me in app/views/projects/index.html.erb</p>
+<%= link_to "Creer un nouveau projet", new_project_path, class: "btn btn-danger" %>
 <ul>
   <% @projects.each do |project| %>
     <li>
