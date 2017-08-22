@@ -2,8 +2,8 @@
 
 <div class= "container-form">
   <%if user_signed_in?%>
-    <h1>Bienvenue</h1>
-    <h2>Veuillez compléter votre profil :</h2>
+    <h1 class="police-title">Bienvenue</h1>
+    <h2 class="police-title">Veuillez compléter votre profil :</h2>
   <%else%>
     <% redirect_to "/users/sign_in" %>
   <%end%>
@@ -45,7 +45,7 @@
         <%= f.input :birthday, placeholder: "Date de naissance" %>
         <%= f.input :gender, as: :select, collection: User.genders.keys, item_wrapper_tag: false, boolean_style: :inline, include_blank: false%>
         <%= f.input :phone_number, placeholder: "Numéro de téléphone" %>
-         <%= f.input :description, placeholder: "Racontez votre histoire" %>
+        <%= f.input :description, placeholder: "Racontez votre histoire" %>
         <%= f.input :address, placeholder: "Adresse" %>
         <%= f.input :zip_code, placeholder: "Code postal" %>
         <%= f.input :city, placeholder: "Marseille" %>
