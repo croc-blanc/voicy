@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 actor_count = 1
 puts 'Creating 50 fake actors...'
-50.times do
+20.times do
   actor = User.new(
     first_name:      Faker::Name.first_name,
     last_name:       Faker::Name.last_name,

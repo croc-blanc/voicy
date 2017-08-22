@@ -1,13 +1,12 @@
 
 .card {
-  background: #F7F7F7;
-  background: 100px;
+  // background: #F7F7F7;
   margin-bottom: 10px;
   border-radius: 5px;
   position: relative;
-  height:140px;
+  height:88px;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
-
 
 .card-header {
   height: 150px;
@@ -29,13 +28,18 @@
   color: white;
 }
 
+.text-voice {
+  font-weight:bold;
+
+}
+
   /* flip the pane when hovered */
   .flip-container:hover .flipper, .flip-container.hover .flipper {
     transform: rotateY(180deg);
   }
 
 .flip-container, .front, .back {
-  width: 555px;
+  width: 370px;
   height: 100px;
 }
 
@@ -62,11 +66,15 @@
 }
 
 /* back, initially hidden pane */
-.back h2{
+.back p{
   transform: rotateY(180deg);
   padding: 30px;
   font-weight: lighter !important;
-  font-color:black !important;
+  color:black !important;
   font-size: 25px !important;
-  text-decoration: none !important;
+  text-decoration: none;
+}
+
+.card-mort {
+  height: 200px;
 }
