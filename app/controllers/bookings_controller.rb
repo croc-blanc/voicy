@@ -5,12 +5,13 @@ class BookingsController < ApplicationController
   end
   def create
     booking = Booking.new(booking_params)
+    user = User.find(booking.user_id)
     if booking.save
       redirect_to users_path
       flash[:notice] = "L'acteur à bien était ajouté à votre projet !"
     else
-      redirect_to users_path
-      flash[:alert] = "Cet acteur est déjà présent dans votre projet" 
+      redirect_to user_path(user)
+      flash[:alert] = "Cet acteur est déjà présent dans votre projet"
     end
   end
 
