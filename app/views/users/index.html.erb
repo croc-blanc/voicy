@@ -3,11 +3,11 @@
     <div class="container">
       <div class="row">
         <% @users.actor.each do |user| %>
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-4">
           <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
             <div class="flipper">
               <div class="front">
-                <div class="card text-center" id="photoback" style="background-image: url('https://www.juliedesk.com/wp-content/uploads/2017/03/language-naturel@1x.png')">
+                <div class="card text-center">
                         <div class="photo-index"><%if user.photos?%>
                           <%=cl_image_tag user.photos.first.path, :width=>75, :height=>75, :gravity=>"face", :radius=>"max", :effect=>"sharpen", :crop=>"thumb"%>
                         <%else%>
@@ -16,22 +16,27 @@
                         <%end%>
                         </div>
                           <div class="text">
-                           <span><%=user.first_name%> <%=user.last_name%></span> - <span>Voix: <%=user.voice_attribute%></span>
+                           <span><%=user.first_name%> <%=user.last_name%></span> - <span class="text-voice">Voix: <%=user.voice_attribute%></span>
                           </div>
                 </div>
             </div>
              <div class="back text-center">
-                  <h2><%=link_to "Voir cet acteur", user_path(user) %></h2>
+                  <p><%=link_to "Voir cet acteur", user_path(user) %></p>
              </div>
           </div>
         </div>
       </div>
       <%end%>
     </div>
-  </div>
  <%else%>
+ <div class="container-form" >
   <h1>Vous devez être directeur artistique pour accéder à cette page</h1><br>
-  <p>merci de vous connecter avec votre profil directeur artistique</p>
+  </div>
+  <div class="card-mort" style="background-image: url('http://corigif.free.fr/tetemort/img/tetemort_011.gif')">
+  </div>
+
+</div>
+
 
 <%end%>
 
