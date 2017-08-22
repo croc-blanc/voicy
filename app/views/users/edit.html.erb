@@ -15,7 +15,7 @@
         <%= f.input :last_name, placeholder: "Jean" %>
         <%= f.input :first_name, placeholder: "Lassale" %>
         <%= f.input :birthday, placeholder: "Date de naissance" %>
-        <%= f.input :gender, as: :select, collection: User.genders.keys%>
+        <%= f.input :gender, as: :select, collection: User.genders.keys, include_blank: false%>
 
         <!-- ici c'est en radio button car on ne peut choisir qu'une homme ou femme -->
         <%= f.input :website, placeholder: "Site internet" %>
@@ -31,7 +31,7 @@
         <%= f.input :videos, as: :attachinary %>
 
 
-        <%= f.input :voice_attribute, as: :select, collection: User.voice_attributes.keys, item_wrapper_tag: false, boolean_style: :inline%>
+        <%= f.input :voice_attribute, as: :select, collection: User.voice_attributes.keys, item_wrapper_tag: false, boolean_style: :inline, include_blank: false%>
         <!-- ici c'est en radio button car on ne peut choisir qu'un attribut -->
         <%= f.input :voices, as: :attachinary %>
 
@@ -43,7 +43,7 @@
         <%= f.input :first_name, placeholder: "Lassale" %>
 
         <%= f.input :birthday, placeholder: "Date de naissance" %>
-        <%= f.input :gender, as: :select, collection: User.genders.keys, item_wrapper_tag: false, boolean_style: :inline%>
+        <%= f.input :gender, as: :select, collection: User.genders.keys, item_wrapper_tag: false, boolean_style: :inline, include_blank: false%>
         <%= f.input :phone_number, placeholder: "Numéro de téléphone" %>
          <%= f.input :description, placeholder: "Racontez votre histoire" %>
         <%= f.input :address, placeholder: "Adresse" %>
@@ -54,4 +54,3 @@
       <%end%>
   <%end%>
 </div>
-
