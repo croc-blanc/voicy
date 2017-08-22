@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    if current_user.DA? # A modifier par greg
+    if current_user.DA?
         @project = Project.new
     else
       flash[:notice] = "Your should be Artistic director to create a project "
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    if current_user.DA?
+    if current_user.actor?
       flash[:notice] = "Your should be Artistic director to edit a project "
       redirect_to root_path
     end
