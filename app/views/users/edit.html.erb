@@ -16,6 +16,7 @@
         <%= f.input :first_name, placeholder: "Lassale" %>
         <%= f.input :birthday, placeholder: "Date de naissance" %>
         <%= f.input :gender, as: :select, collection: User.genders.keys%>
+                        
         <!-- ici c'est en radio button car on ne peut choisir qu'une homme ou femme -->
         <%= f.input :website, placeholder: "Site internet" %>
         <%= f.input :phone_number, placeholder: "Numéro de téléphone" %>
@@ -48,6 +49,7 @@
         <%= f.input :zip_code, placeholder: "Code postal" %>
         <%= f.input :city, placeholder: "Marseille" %>
         <%= f.submit "Save", class: "btn btn-danger" %>
+
       <%end%>
   <%end%>
 </div>
