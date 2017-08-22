@@ -1,15 +1,20 @@
-<h2>Nom du projet :<%= @project.name %></h2>
-<p>description : <%= @project.description %></p>
-<ul>
-  <h4>Liste des participants au projet :</h4>
-  <% @project.users.each do |participant|  %>
-    <li>
-      <%= link_to participant.first_name, user_path(participant) %>
-      <%= link_to booking_path(participant.bookings.where(project_id: @project.id).first.id), method: :delete  do %>
-        <i class="fa fa-close"></i>
-        <% end %>
-    </li>
-  <% end  %>
-</ul>
 
-<%= link_to "Retour a la liste des projets", projects_path %>
+<div class= "container-form">
+  <h2>Nom du projet :<%= @project.name %></h2>
+  <p>description : <%= @project.description %></p>
+
+  <ul>
+    <h4>Liste des participants au projet :</h4>
+    <% @project.users.each do |participant|  %>
+      <li>
+        <%= link_to participant.first_name, user_path(participant) %>
+        <%= link_to booking_path(participant.bookings.where(project_id: @project.id).first.id), method: :delete  do %>
+          <i class="fa fa-close"></i>
+          <% end %>
+      </li>
+    <% end  %>
+  </ul>
+
+
+  <%= link_to "Retour a la liste des projets", projects_path %>
+</div>
