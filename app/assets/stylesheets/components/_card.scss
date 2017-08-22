@@ -1,5 +1,5 @@
 
-.card {
+.card-index {
   // background: #F7F7F7;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -25,12 +25,12 @@
   text-transform: capitalize;
   left:10px;
   bottom:10px;
-  color: white;
+  color: black;
 }
 
 .text-voice {
-  font-weight:bold;
-
+  font-weight:lighter;
+  color: black;
 }
 
   /* flip the pane when hovered */
