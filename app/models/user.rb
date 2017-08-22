@@ -19,11 +19,10 @@ class User < ApplicationRecord
   validates :phone_number, presence: :true, on: :update, unless: :devise?
   validates :gender, presence: :true, on: :update, unless: :devise?
   validates :birthday, presence: :true, on: :update, unless: :devise?
-  validates_inclusion_of :avaibility, :in => [true, false], on: :update, unless: :devise?
-  validates :voice_attribute, presence: :true, on: :update, unless: :devise?
    with_options if: :actor? do |actor|
     actor.validates_inclusion_of :avaibility, :in => [true, false], on: :update
     actor.validates :voice_attribute, presence: :true, on: :update
+    actor.validates :voice_attribute, presence: :true, on: :update, unless: :devise?
   end
 
   enum voice_attribute: [:grave, :moyen, :aigu]
