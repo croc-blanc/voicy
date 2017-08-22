@@ -1,20 +1,34 @@
-
-<div class= "container-form">
-  <h2>Nom du projet :<%= @project.name %></h2>
-  <p>description : <%= @project.description %></p>
-
-  <ul>
-    <h4>Liste des participants au projet :</h4>
-    <% @project.users.each do |participant|  %>
-      <li>
-        <%= link_to participant.first_name, user_path(participant) %>
-        <%= link_to booking_path(participant.bookings.where(project_id: @project.id).first.id), method: :delete  do %>
-          <i class="fa fa-close"></i>
-          <% end %>
-      </li>
-    <% end  %>
-  </ul>
+<h1>Bienvenue sur votre projet : <%= @project.name %></h1>
+<h2>Il y a actuellement <%= @project.users.count %> participant(s) au projet</h2>
 
 
-  <%= link_to "Retour a la liste des projets", projects_path %>
-</div>
+
+    <div class="wrapper-flex">
+     	<header>
+        	<a href="javascript:void(0)" class="show-list"><i class="fa fa-th-list"></i></a>
+            <a href="javascript:void(0)" class="hide-list"><i class="fa fa-th"></i></a>
+        </header>
+        <div class="container-flex">
+          <% @project.users.each do |participant|  %>
+        	   <% if participant.photos? %>
+               <div class="box", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+               url('<%= cl_image_path participant.photos.first.path, height: 300, width: 400, crop: :fill %>')">
+               <%= link_to participant.first_name, user_path(participant) %>
+               <%= link_to booking_path(participant.bookings.where(project_id: @project.id).first.id), method: :delete do %>
+                 <i class="fa fa-close"></i>
+               <% end %>
+             </div>
+             <% else %>
+               <div class="box", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+               url()">
+               <%= link_to participant.first_name, user_path(participant) %>
+               <%= link_to booking_path(participant.bookings.where(project_id: @project.id).first.id), method: :delete do %>
+                 <i class="fa fa-close"></i>
+               <% end %>
+             <% end %>
+            <% end %>
+        </div>
+    </div>
+
+
+    <%= link_to "Retour a la liste des projets", projects_path %>
