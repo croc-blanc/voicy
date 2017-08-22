@@ -1,5 +1,5 @@
 <% if @user.actor? %>
-  <% if current_user.DA?%>
+  <% if current_user.DA? and !current_user.projects.empty?%>
     <%= simple_form_for @booking do |f| %>
       <%= f.input :project_id, as: :select, collection: current_user.projects, include_blank: false%>
       <%= f.input :user_id, as: :hidden, :input_html => { :value => @user.id } %>
