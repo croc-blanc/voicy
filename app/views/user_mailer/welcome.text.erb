@@ -1,0 +1,25 @@
+User#welcome
+
+<%= @greeting %>, find me in app/views/user_mailer/welcome.text.erb
+
+<%if @user.DA? %>
+    <p>Bonjour <%= @user.last_name%> <%= @user.first_name%></p>
+
+    <p>En tant que DA, vous pouvez maintenant:</p>
+      <ul>
+        <li>Compléter votre profil</li>
+        <li>Créer des projets</li>
+        <li>Rechercher des comédiens selon vos critères et écouter leurs voix</li>
+        <li>Booker les comédiens sur vos projets</li>
+        <li>Intéragir avec eux</li>
+      </ul>
+
+    <p>Bonne recherche!</p>
+
+<%else%>
+    <p>Bonjour <%= @user.last_name%> <%= @user.first_name%></p>
+
+    <p>Vous pouvez maintenant compléter votre profil et ajoutez des maquettes de voix sur votre profil!</p>
+
+    <p>Have fun!</p>
+<%end%>
