@@ -1,0 +1,61 @@
+// div.colonnes {
+//     display: table;
+// }
+
+// p.colonne, p.contenu {
+//     display: table-cell;
+
+//     padding: 5px;
+//     border: 1px solid black;
+// }
+
+
+.title-gallery {
+  font-family: 'Fjalla One', sans-serif;
+  text-align: center;
+  letter-spacing:3px;
+  font-size:35px;
+}
+
+.display {
+  padding-top: 35em;
+}
+
+.gallery {
+  width: 640px;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+.gallery > div {
+  position: relative;
+  float: left;
+  padding: 5px;
+}
+
+.gallery > div > img {
+  display: block;
+  width: 200px;
+  transition: .1s transform;
+  transform: translateZ(0); /* hack */
+}
+
+.gallery > div:hover {
+  z-index: 1;
+}
+
+.gallery > div:hover > img {
+  transform: scale(1.7,1.7);
+  transition: .3s transform;
+}
+
+.cf:before, .cf:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+
+.cf:after {
+  clear: both;
+}
