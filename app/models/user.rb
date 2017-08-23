@@ -27,8 +27,8 @@ class User < ApplicationRecord
     actor.validates :voice_attribute, presence: :true, on: :update, unless: :devise?
   end
 
-  enum voice_attribute: [:grave, :moyen, :aigu]
-  enum gender: [:femme, :homme]
+  enum voice_attribute: [:Baryton, :Ténor, :Soprano, :Mezzo]
+  enum gender: [:Femme, :Homme]
   enum role: [:DA, :actor]
 
   private
