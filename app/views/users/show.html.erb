@@ -1,3 +1,16 @@
+<div class="row text-center">
+  <div class="col-md-3 col-offset-6">
+    <% if @user.actor? %>
+      <% if current_user.DA? and !current_user.projects.empty?%>
+        <%= simple_form_for @booking do |f| %>
+          <%= f.input :project_id, as: :select, collection: current_user.projects, include_blank: false%>
+          <%= f.input :user_id, as: :hidden, :input_html => { :value => @user.id } %>
+          <%= f.submit "Booker cet acteur !", class: "btn btn-danger", :url => bookings_path%>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+</div>
 <div class="profile">
   <h1 class="h1-profil" >
     <%=@user.first_name%> <%=@user.last_name%>
@@ -34,9 +47,11 @@
       <%=@user.description%>
     </p>
   </div>
+  <% unless @user.photos.empty? %>
   <div class="imageHolder profilePic">
     <%= cl_image_tag @user.photos.first.path, :width=>450 %>
   </div>
+  <% end %>
 
 
   <% @user.voices.each do |voi| %>
@@ -47,9 +62,8 @@
 <div class="display">
 
   <% if current_user.id == params[:id].to_i %>
-  <%= link_to "Edit profile", edit_user_path(current_user), class: "btn btn-danger btn-block" %>
+  <%= link_to "Edit profile", edit_user_path(current_user), class: "btn btn-danger" %>
   <% else %>
-  <p>hello</p>
   <% end %>
   <br>
   <br>
@@ -57,7 +71,7 @@
 
 
 
-  <div class="title-gallery">My project </div>
+  <div class="title-gallery">Mes photos </div>
   <br>
 
   <% @user.photos.each do |pho| %>
