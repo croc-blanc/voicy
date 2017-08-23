@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
     if current_user.DA? # A modifier par greg
         @project = Project.new
     else
-      flash[:notice] = "Your should be Artistic director to create a project "
+      flash[:success] = "Vous devez être un directeur artistique pour créer un projet"
       redirect_to root_path
     end
   end
@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   @project = Project.new(project_params)
   @project.user_id = current_user.id
     if @project.save
-      flash[:notice] = "Your project has been created"
+      flash[:notice] = "Votre projet à bien était créer"
       redirect_to project_path(@project)
     else
       render :new
@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
 
   def edit
     if current_user.actor?
-      flash[:notice] = "Your should be Artistic director to edit a project "
+      flash[:notice] = "Vous devez être un directeur artistique pour éditer un projet "
       redirect_to root_path
     end
   end
@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      flash[:notice] = "Your project has been updated"
+      flash[:notice] = "Votre projet a bien été modifié"
       redirect_to project_path
     else
       render :edit
