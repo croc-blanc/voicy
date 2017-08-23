@@ -4,6 +4,7 @@
   <%= f.input :name %>
   <%= f.text_area :description %>
   <%= f.input :category, collection: Project.categories.keys, include_blank: false%>
+  <%= f.input :address %>
   <%= f.input :begin, as: :date %>
   <%= f.input :end, as: :date %>
 

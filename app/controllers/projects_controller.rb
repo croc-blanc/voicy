@@ -32,6 +32,11 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @hash = Gmaps4rails.build_markers(@project) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def update
@@ -60,6 +65,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :category, :begin, :end)
+    params.require(:project).permit(:name, :description, :address, :category, :begin, :end)
   end
 end
