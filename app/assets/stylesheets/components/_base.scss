@@ -1,43 +1,39 @@
 
-.alert-info {
-    background: #af0101;
-    border-color: #af0101;
-}
-
 label {
   font-family: 'Archivo', sans-serif, semi-bold;
 }
-
 .police-title {
   font-family: 'Archivo', sans-serif, semi-bold;
 }
-
 .btn {
   border-radius: 5px;
 }
-
-.form-control {
-  width: 150%;
+.form-control2 {
+  width: 60%;
 }
-
 body {
-  position: absolute;
   background-color: #E6E6E6;
   color: #616668;
-  position: relative;
-  align-self: center;
 }
-
-.container-form {
-  position: absolute;
-  padding: 90px;
+.banner-wrapper {
+  height: 100vh;
+  background-size: cover !important;
+  position: relative
 }
 .btn {
   background-color: #af0101;
 }
-
 .wrong-way {
 
 }
-
-
+h5{
+    font-family: 'Archivo', sans-serif, semi-bold;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 24px;
+    text-align: center;
+}
+.view{
+  min-height: calc(100vh - 100px);
+}
