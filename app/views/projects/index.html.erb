@@ -1,19 +1,26 @@
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
-<ul>
-  <% @projects.each do |project| %>
-    <li>
-      <%= link_to project.name, project_path(project) %>
-      <%= link_to project_path(project), data: "fdfd", method: :delete do %>
-        <i class="fa fa-close"></i>
-        <% end %>
-    </li>
-  <% end %>
-</ul>
+
+
+  <div class="link ">
+    <h1>Mes projets</h1>
+    <%= link_to "Creer un nouveau projet", new_project_path, class: "btn btn-danger" %>
+  </div>
+    <div class="container">
+      <div class="row">
+       <% @projects.each do |project| %>
+        <div class="col-xs-12 col-sm-4">
+        <%=link_to project_path(project) do %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.it/200/300/?random');">
+                <div class="card-category"><%=project.name%></div>
+                <img class="card-user" src="http://cyclurba.fr/personne/image/avatar07933.gif" alt="Avatar07933">
+              </div>
+              <div class="card-description">
+                <%= link_to project_path(project), method: :delete do %>
+                <i class="fa fa-close"></i>
+                <% end %>
+              </div>
+         <% end %>
+        </div>
+       <%end%>
+      </div>
+    </div>
 

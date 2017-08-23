@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  after_create :send_welcome_email
+
   devise         :database_authenticatable, :registerable,
                  :recoverable, :rememberable, :trackable, :validatable
   has_many       :bookings
@@ -25,14 +27,17 @@ class User < ApplicationRecord
     actor.validates :voice_attribute, presence: :true, on: :update, unless: :devise?
   end
 
-  enum voice_attribute: [:grave, :moyen, :aigu]
-  enum gender: [:femme, :homme]
+  enum voice_attribute: [:Baryton, :Ténor, :Soprano, :Mezzo]
+  enum gender: [:Femme, :Homme]
   enum role: [:DA, :actor]
-
 
   private
 
   def devise?
     email_changed? || encrypted_password_changed?
+  end
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 end

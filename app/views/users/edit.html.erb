@@ -1,9 +1,11 @@
 
 
-<div class= "container-edit">
+<div class= "container">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
   <%if user_signed_in?%>
-    <h1>Bienvenue</h1>
-    <h2>Veuillez compléter votre profil :</h2>
+    <h1 class="police-title">Bienvenue</h1>
+    <h2 class="police-title">Veuillez compléter votre profil :</h2>
   <%else%>
     <% redirect_to "/users/sign_in" %>
   <%end%>
@@ -15,12 +17,12 @@
         <%= f.input :last_name, placeholder: "Jean" %>
         <%= f.input :first_name, placeholder: "Lassale" %>
         <%= f.input :birthday, placeholder: "Date de naissance" %>
-        <%= f.input :gender, as: :select, collection: User.genders.keys%>
+        <%= f.input :gender, as: :select, collection: User.genders.keys, include_blank: false%>
 
         <!-- ici c'est en radio button car on ne peut choisir qu'une homme ou femme -->
         <%= f.input :website, placeholder: "Site internet" %>
         <%= f.input :phone_number, placeholder: "Numéro de téléphone" %>
-        <%= f.input :avaibility , as: :radio_buttons, :collection => [['oui', false], ['Pas en ce moment', false]]%>
+        <%= f.input :avaibility , as: :radio_buttons, :collection => [['Oui', false], ['Pas en ce moment', false]]%>
         <!-- ici c'est en radio button car on ne peut choisir qu'un attribut -->
         <%= f.input :description, placeholder: "Racontez votre histoire" %>
         <%= f.input :address, placeholder: "Adresse" %>
@@ -31,7 +33,7 @@
         <%= f.input :videos, as: :attachinary %>
 
 
-        <%= f.input :voice_attribute, as: :select, collection: User.voice_attributes.keys, item_wrapper_tag: false, boolean_style: :inline%>
+        <%= f.input :voice_attribute, as: :select, collection: User.voice_attributes.keys, item_wrapper_tag: false, boolean_style: :inline, include_blank: false%>
         <!-- ici c'est en radio button car on ne peut choisir qu'un attribut -->
         <%= f.input :voices, as: :attachinary %>
 
@@ -43,9 +45,9 @@
         <%= f.input :first_name, placeholder: "Lassale" %>
 
         <%= f.input :birthday, placeholder: "Date de naissance" %>
-        <%= f.input :gender, as: :select, collection: User.genders.keys, item_wrapper_tag: false, boolean_style: :inline%>
+        <%= f.input :gender, as: :select, collection: User.genders.keys, item_wrapper_tag: false, boolean_style: :inline, include_blank: false%>
         <%= f.input :phone_number, placeholder: "Numéro de téléphone" %>
-         <%= f.input :description, placeholder: "Racontez votre histoire" %>
+        <%= f.input :description, placeholder: "Racontez votre histoire" %>
         <%= f.input :address, placeholder: "Adresse" %>
         <%= f.input :zip_code, placeholder: "Code postal" %>
         <%= f.input :city, placeholder: "Marseille" %>
@@ -54,4 +56,5 @@
       <%end%>
   <%end%>
 </div>
-
+</div>
+</div>
