@@ -9,9 +9,16 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body class="police-title">
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="view">
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+    </div>
+     <% unless action_name == "home" %>
+       <!-- #render the footer partial "_footer.html.erb" -->
+       <%= render 'shared/footer' %>
+      <% end %>
+
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %> <!-- Append this after the main `javascript_include_tag`. -->
   </body>
