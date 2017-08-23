@@ -20,7 +20,7 @@
         <!-- ici c'est en radio button car on ne peut choisir qu'une homme ou femme -->
         <%= f.input :website, placeholder: "Site internet" %>
         <%= f.input :phone_number, placeholder: "Numéro de téléphone" %>
-        <%= f.input :avaibility , as: :radio_buttons, :collection => [['oui', false], ['Pas en ce moment', false]]%>
+        <%= f.input :avaibility , as: :radio_buttons, :collection => [['Oui', false], ['Pas en ce moment', false]]%>
         <!-- ici c'est en radio button car on ne peut choisir qu'un attribut -->
         <%= f.input :description, placeholder: "Racontez votre histoire" %>
         <%= f.input :address, placeholder: "Adresse" %>
