@@ -1,32 +1,55 @@
-<h1>Bienvenue sur votre projet : <%= @project.name %></h1>
-<h2>Il y a actuellement <%= @project.users.count %> participant(s) au projet</h2>
-
-    <div class="wrapper-flex">
-     	<header>
-        	<a href="javascript:void(0)" class="show-list"><i class="fa fa-th-list"></i></a>
-            <a href="javascript:void(0)" class="hide-list"><i class="fa fa-th"></i></a>
-        </header>
-        <div class="container-flex">
-          <% @project.users.each do |participant|  %>
-        	   <% if participant.photos? %>
-               <div class="box", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-               url('<%= cl_image_path participant.photos.first.path, height: 300, width: 400, crop: :fill %>')">
-               <%= link_to participant.first_name, user_path(participant) %>
-               <%= link_to booking_path(participant.bookings.where(project_id: @project.id).first.id), method: :delete do %>
-                 <i class="fa fa-close"></i>
-               <% end %>
-             </div>
-             <% else %>
-               <div class="box", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-               url()">
-               <%= link_to participant.first_name, user_path(participant) %>
-               <%= link_to booking_path(participant.bookings.where(project_id: @project.id).first.id), method: :delete do %>
-                 <i class="fa fa-close"></i>
-               <% end %>
-             <% end %>
-            <% end %>
+<div class="container">
+  <div class="row text-center">
+    <h1>Bienvenue sur votre projet : <%= @project.name %></h1>
+    <h2>Il y a actuellement <%= pluralize @project.users.size, "participant" %> au projet</h2>
+  </div>
+  <div class="row">
+    <br>
+  </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+              <% @project.users.each do |participant|  %>
+                  <div class="card col-md-2 text-center", style="padding:10px;">
+                    <img class="card-img-top" style="border-radius: 25px" src="<%= cl_image_path participant.photos.first.path,
+                    height: 50, width: 50, crop: :fill %>" alt="Card image cap">
+                    <div class="card-block">
+                      <h4 class="card-title"><%= link_to participant.first_name, user_path(participant) %></h4>
+                      <p class="card-text"><%= link_to booking_path(participant.bookings.where(project_id: @project.id).first.id), method: :delete do %>
+                        <i class="fa fa-close"></i>
+                      <% end %></p>
+                      <p class="card-text"><small class="text-muted"><%=participant.voice_attribute%></small></p>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+            <div class="row", style="padding-top:35%;">
+          <div class="container">
+            <div id="map" style="width: 100%; height: 300px;"></div>
+              <% content_for(:after_js) do %>
+                <%= javascript_tag do %>
+                  $(document).ready(function() {
+                    var handler = Gmaps.build('Google');
+                    handler.buildMap({ internal: { id: 'map' } }, function() {
+                      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                      handler.bounds.extendWith(markers);
+                      handler.fitMapToBounds();
+                      if (markers.length == 0) {
+                        handler.getMap().setZoom(2);
+                      } else if (markers.length == 1) {
+                        handler.getMap().setZoom(14);
+                      }
+                    });
+                  });
+                <% end %>
+              <% end %>
+          </div>
+          </div>
         </div>
-    </div>
-
-
+        <div class="row text-center" style="padding:20px;">
+          <h3>Desciption du projet :</h3>
+            <p> <%= @project.description %> </p>
+        </div>
+  <div class="row" style="padding:20px;">
     <%= link_to "Retour a la liste des projets", projects_path %>
+  </div>
+</div>
