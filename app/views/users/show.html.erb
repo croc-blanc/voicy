@@ -1,60 +1,81 @@
-<div class= "container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+<div class="profile">
+  <h1 class="h1-profil" >
+    <%=@user.first_name%> <%=@user.last_name%>
+  </h1>
+  <div class="infoHolder">
+
+    <h2 class="h2-profil">
       <% if @user.actor? %>
-        <% if current_user.DA? and !current_user.projects.empty?%>
-          <%= simple_form_for @booking do |f| %>
-            <%= f.input :project_id, as: :select, collection: current_user.projects, include_blank: false%>
-            <%= f.input :user_id, as: :hidden, :input_html => { :value => @user.id } %>
-            <%= f.submit "Booker cet acteur !", class: "btn btn-success", :url => bookings_path%>
-            <% end %>
-          <% end %>
-        <% end %>
-        <%if current_user.actor?%>
-              <%=@user.last_name%>
-              <%=@user.first_name%>
-              <%=@user.birthday%>
-              <%=@user.gender%>
-              <%=@user.website%>
-              <%=@user.phone_number%>
-              <%=@user.avaibility%>
-              <%=@user.description%>
-              <%=@user.address%>
-              <%=@user.zip_code%>
-              <%=@user.city%>
-              <%=@user.voice_attribute%>
+      Je suis comedien !
+      <% else %>
+      Je suis DA !
+      <%end%>
+      <br>
+      Type de voix : <%=@user.voice_attribute%>
+      <br>
+      <% if @user.avaibility %>
+      je suis disponible !
+      <% else %>
+      indisponible en ce moment !
+      <% end %>
+    </h2>
+    <p class="lighter p-profil">
+      <%=@user.gender.capitalize%>
+    </p>
+    <p class="lighter p-profil">
+      <%=@user.phone_number%> / <%=@user.email%>
+    </p>
+    <p class="lighter p-profil">
+      <%=@user.address%>,
+      <%=@user.zip_code%>,
+      <%=@user.city%>
+    </p>
+    <p>
+      <%=@user.description%>
+    </p>
+  </div>
+  <div class="imageHolder profilePic">
+    <%= cl_image_tag @user.photos.first.path, :width=>450 %>
+  </div>
 
-              <% @user.voices.each do |voi| %>
-              <%=cl_video_tag(voi.path, controls: true)%>
-              <%end%>
 
-              <% @user.photos.each do |pho| %>
-              <%=cl_image_tag pho.path, width:150, height:150, crop: :fill%>
-              <%end%>
+  <% @user.voices.each do |voi| %>
+  <%=cl_video_tag(voi.path) %>
+  <%end%>
+</div>
 
-              <% @user.videos.each do |vid| %>
-                <%=cl_video_tag(vid.path, :width=>0.5, :crop => :scale, :preload => "none",
-                  :controls => true, :fallback_content => "Your browser does not support HTML5 video tags")%>
+<div class="display">
 
-              <%end%>
+  <% if current_user.id == params[:id].to_i %>
+  <%= link_to "Edit profile", edit_user_path(current_user), class: "btn btn-danger btn-block" %>
+  <% else %>
+  <p>hello</p>
+  <% end %>
+  <br>
+  <br>
+  <br>
 
-        <%else%>
 
-              <%=@user.last_name%>
-              <%=@user.first_name%>
-              <%=@user.birthday%>
-              <%=@user.gender%>
-              <%=@user.website%>
-              <%=@user.phone_number%>
-              <%=@user.description%>
-              <%=@user.address%>
-              <%=@user.zip_code%>
-              <%=@user.city%>
 
-              <% @user.photos.each do |pho| %>
-              <%=cl_image_tag pho.path, width:150, height:150, crop: :fill%>
-              <%end%>
-        <%end%>
+  <div class="title-gallery">My project </div>
+  <br>
+
+  <% @user.photos.each do |pho| %>
+  <div class="gallery" >
+    <div>
+      <%=cl_image_tag pho.path %>
     </div>
   </div>
+
+  <% end %>
+
+  <% @user.videos.each do |vid| %>
+  <%= cl_video_tag(vid.path, :width=>176, :crop => :scale, :preload => "none",
+  :controls => true, :fallback_content => "Your browser does not support HTML5 video tags") %>
+  <% end %>
 </div>
+
+
+<% @user.voices.each do |voi| %>
+<%=cl_video_tag(voi.path) %>
+<%end%>
