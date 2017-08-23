@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row text-center">
     <h1>Bienvenue sur votre projet : <%= @project.name %></h1>
-    <h2>Il y a actuellement <%= pluralize @project.users.size, "participant" %> au projet</h2>
+    <p>Il y'a actuellement <%= pluralize @project.users.size, "participant" %> au projet</p>
   </div>
   <div class="row">
     <br>
@@ -22,7 +22,7 @@
                   </div>
               <% end %>
             </div>
-            <div class="row", style="padding-top:35%;">
+            <div class="row">
           <div class="container">
             <div id="map" style="width: 100%; height: 300px;"></div>
               <% content_for(:after_js) do %>
@@ -50,6 +50,6 @@
             <p> <%= @project.description %> </p>
         </div>
   <div class="row" style="padding:20px;">
-    <%= link_to "Retour a la liste des projets", projects_path %>
+    <%= link_to "Retour a la liste des projets", projects_path, class: "btn btn-danger" %>
   </div>
 </div>
